@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hima, Will You Date Me?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('collage.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1, p {
+            margin: 0.5em 0;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            background-color: #f76c6c;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #d9534f;
+        }
+        #celebration {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('celebration.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #celebration h1 {
+            font-size: 3em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Content -->
+    <div id="main-content">
+        <h1>Hima, Will You Be My Girlfriend?</h1>
+        <p>Hey Hima, you’ve brought so much happiness into my life. I’d love to make it official and take this journey together. What do you say?</p>
+        <div class="buttons">
+            <button id="yes">Yes</button>
+            <button id="no">No</button>
+        </div>
+    </div>
+
+    <!-- Celebration Page -->
+    <div id="celebration">
+        <h1>🎉 Yay! You Said Yes! 🎉</h1>
+        <p>You've made me the happiest person ever!</p>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById('yes');
+        const noButton = document.getElementById('no');
+        const buttonsDiv = document.querySelector('.buttons');
+        const mainContent = document.getElementById('main-content');
+        const celebration = document.getElementById('celebration');
+
+        noButton.addEventListener('click', () => {
+            alert("Oops! You don’t really have a choice here 😄");
+        });
+
+        yesButton.addEventListener('click', () => {
+            // Display confirmation question
+            mainContent.innerHTML = `
+                <h1>Are You Sure?</h1>
+                <div class="buttons">
+                    <button id="confirm-yes">Yes</button>
+                    <button id="confirm-no">No</button>
+                </div>
+            `;
+
+            // Add listeners for confirmation buttons
+            document.getElementById('confirm-no').addEventListener('click', () => {
+                alert("Oops! You don’t really have a choice here 😄");
+            });
+
+            document.getElementById('confirm-yes').addEventListener('click', () => {
+                // Show celebration page
+                mainContent.style.display = 'none';
+                celebration.style.display = 'flex';
+            });
+        });
+    </script>
+</body>
+</html>
